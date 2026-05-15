@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Activity,
@@ -424,7 +425,48 @@ function About() {
 }
 
 function Contact() {
-  const email = "mailto:mdrosser123@gmail.com?subject=R3%20Risk%20Solutions%20Risk%20Review%20Request";
+  const [form, setForm] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    industry: "",
+    concern: "",
+    message: "",
+  });
+
+  const update = (field) => (event) => {
+    setForm((previous) => ({
+      ...previous,
+      [field]: event.target.value,
+    }));
+  };
+
+  const submitForm = (event) => {
+    event.preventDefault();
+
+    const subject = "Risk Review Request";
+    const body = [
+      "Risk Review Request",
+      "",
+      "CONTACT INFORMATION",
+      `Name: ${form.name || "Not provided"}`,
+      `Company: ${form.company || "Not provided"}`,
+      `Email: ${form.email || "Not provided"}`,
+      `Phone: ${form.phone || "Not provided"}`,
+      "",
+      "BUSINESS DETAILS",
+      `Industry: ${form.industry || "Not provided"}`,
+      `Biggest Concern: ${form.concern || "Not provided"}`,
+      "",
+      "ADDITIONAL DETAILS",
+      form.message || "Not provided",
+      "",
+      "Submitted from the R3 Risk Solutions website.",
+    ].join("\n");
+
+    window.location.href = `mailto:mdrosser123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   return (
     <section id="contact" className="section contact-section">
@@ -443,20 +485,78 @@ function Contact() {
         </div>
       </div>
 
-      <div className="contact-card">
+      <form className="contact-card contact-form" onSubmit={submitForm}>
         <div className="contact-card-header">
           <img src={logo} alt="R3 Risk Solutions" />
           <span>Risk Review Request</span>
         </div>
 
-        <p>
-          Ready to identify preventable risk and workers’ comp opportunities?
-        </p>
+        <div className="form-grid">
+          <label>
+            Name
+            <input value={form.name} onChange={update("name")} required placeholder="Your name" />
+          </label>
 
-        <a href={email} className="primary-button">Request Review</a>
+          <label>
+            Company
+            <input value={form.company} onChange={update("company")} required placeholder="Company name" />
+          </label>
 
-        <small>This opens a clean email to Maurice at mdrosser123@gmail.com.</small>
-      </div>
+          <label>
+            Email
+            <input type="email" value={form.email} onChange={update("email")} required placeholder="name@email.com" />
+          </label>
+
+          <label>
+            Phone
+            <input value={form.phone} onChange={update("phone")} placeholder="Phone number" />
+          </label>
+
+          <label>
+            Industry
+            <select value={form.industry} onChange={update("industry")} required>
+              <option value="">Select industry</option>
+              <option>Manufacturing</option>
+              <option>Construction</option>
+              <option>Service Organization</option>
+              <option>Transportation / Logistics</option>
+              <option>Warehouse / Distribution</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>
+            Biggest Concern
+            <select value={form.concern} onChange={update("concern")} required>
+              <option value="">Select one</option>
+              <option>Rising workers’ comp costs</option>
+              <option>Repeat injuries</option>
+              <option>Return-to-work challenges</option>
+              <option>OSHA compliance support</option>
+              <option>Need safety leadership support</option>
+              <option>Claims management support</option>
+            </select>
+          </label>
+        </div>
+
+        <label className="full-width">
+          Additional Details
+          <textarea
+            value={form.message}
+            onChange={update("message")}
+            rows="5"
+            placeholder="Share anything helpful about your workforce, claims history, safety concerns, or current challenges."
+          />
+        </label>
+
+        <button type="submit" className="primary-button form-button">
+          Request Review
+        </button>
+
+        <small>
+          Submitting opens a prepared email to Maurice at mdrosser123@gmail.com with the subject line “Risk Review Request.”
+        </small>
+      </form>
     </section>
   );
 }
