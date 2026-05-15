@@ -89,7 +89,7 @@ export default function App() {
               className="mb-6 inline-flex items-center gap-3 rounded-full border border-red-500/35 bg-red-500/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-zinc-300"
             >
               <span className="h-2.5 w-2.5 rounded-full bg-red-500 shadow-[0_0_22px_rgba(239,17,29,.95)]" />
-              Founder-led EHS + workers’ comp risk advisory
+              Founder-led EHS + workers’ comp advisory
             </motion.div>
 
             <motion.h1
