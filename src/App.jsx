@@ -1,119 +1,138 @@
+const logo = "/assets/r3-logo.jpg";
+const headshot = "/assets/maurice-headshot.png";
 
 export default function App() {
   return (
-    <main style={{
-      background:'#050505',
-      color:'white',
-      minHeight:'100vh',
-      fontFamily:'Arial, sans-serif'
-    }}>
-      <nav style={{
-        display:'flex',
-        justifyContent:'space-between',
-        alignItems:'center',
-        padding:'24px 60px',
-        borderBottom:'1px solid #222'
-      }}>
-        <img src="/assets/r3-logo.jpg" style={{height:'70px'}} />
-        <button style={{
-          background:'#d71920',
-          color:'white',
-          border:'none',
-          padding:'14px 22px',
-          borderRadius:'12px',
-          fontWeight:'bold'
-        }}>
-          Request Review
-        </button>
-      </nav>
+    <main className="site">
+      <header className="nav">
+        <a href="#home" className="brand">
+          <img src={logo} alt="R3 Risk Solutions" />
+        </a>
 
-      <section style={{
-        display:'grid',
-        gridTemplateColumns:'1.2fr 1fr',
-        gap:'60px',
-        alignItems:'center',
-        padding:'80px 60px'
-      }}>
-        <div>
-          <div style={{
-            color:'#ff4d4d',
-            marginBottom:'20px',
-            fontWeight:'bold',
-            letterSpacing:'1px'
-          }}>
-            FOUNDER-LED EHS + WORKERS' COMP ADVISORY
+        <nav className="links">
+          <a href="#business-case">Business Case</a>
+          <a href="#programs">Programs</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+        </nav>
+
+        <a className="cta" href="mailto:mdrosser123@gmail.com?subject=R3%20Risk%20Solutions%20Risk%20Review%20Request">
+          Request Review
+        </a>
+      </header>
+
+      <section id="home" className="hero">
+        <div className="heroText">
+          <div className="eyebrow">
+            <span></span>
+            Founder-led EHS + workers’ comp risk advisory
           </div>
 
-          <h1 style={{
-            fontSize:'72px',
-            lineHeight:'0.95',
-            margin:'0 0 24px 0'
-          }}>
-            Reduce workplace injuries before they become expensive business problems.
-          </h1>
+          <h1>Reduce workplace injuries before they become expensive business problems.</h1>
 
-          <p style={{
-            color:'#cfcfcf',
-            fontSize:'22px',
-            lineHeight:'1.6'
-          }}>
-            R3 Risk Solutions helps organizations reduce workers' compensation costs,
-            improve safety performance, and strengthen operational readiness.
+          <p>
+            R3 Risk Solutions helps small and mid-sized manufacturing, construction, and service organizations
+            reduce workers’ compensation costs, improve return-to-work outcomes, and strengthen operational
+            safety performance.
           </p>
-        </div>
 
-        <div style={{textAlign:'center'}}>
-          <img
-            src="/assets/maurice-headshot.png"
-            style={{
-              width:'100%',
-              maxWidth:'520px',
-              borderRadius:'24px',
-              border:'3px solid #222'
-            }}
-          />
+          <div className="actions">
+            <a className="primary" href="mailto:mdrosser123@gmail.com?subject=R3%20Risk%20Solutions%20Risk%20Review%20Request">
+              Request Complimentary Risk Review
+            </a>
+            <a className="secondary" href="#programs">
+              Explore Programs
+            </a>
+          </div>
         </div>
       </section>
 
-      <section style={{
-        padding:'40px 60px 100px'
-      }}>
-        <div style={{
-          display:'flex',
-          gap:'24px',
-          alignItems:'center',
-          background:'#111',
-          border:'1px solid #222',
-          borderRadius:'24px',
-          padding:'30px'
-        }}>
-          <img
-            src="/assets/maurice-headshot.png"
-            style={{
-              width:'140px',
-              height:'140px',
-              objectFit:'cover',
-              borderRadius:'20px'
-            }}
-          />
+      <section id="business-case" className="section">
+        <p className="sectionEyebrow">Business Case</p>
+        <h2>The real cost of a workplace injury is bigger than the claim.</h2>
+        <p>
+          Preventable workplace injuries can create lost productivity, overtime, premium pressure,
+          morale issues, compliance exposure, and operational disruption.
+        </p>
+
+        <div className="cards">
+          <div className="card"><strong>$1B+</strong><span>Weekly direct workers’ comp costs for disabling workplace injuries.</span></div>
+          <div className="card"><strong>$43K</strong><span>Average medically consulted workplace injury cost cited in supporting materials.</span></div>
+          <div className="card"><strong>$10K+</strong><span>Potential annual savings from preventing even a portion of workplace injuries.</span></div>
+        </div>
+      </section>
+
+      <section id="programs" className="section">
+        <p className="sectionEyebrow">Programs</p>
+        <h2>Professional EHS and workers’ compensation support without a full-time safety manager.</h2>
+
+        <div className="programGrid">
+          <div className="program">
+            <p>Tier 1</p>
+            <h3>Foundation Risk Program</h3>
+            <span>$750 – $1,500/month</span>
+            <ul>
+              <li>Initial workers’ compensation review</li>
+              <li>Workplace risk assessment</li>
+              <li>Return-to-work guidance</li>
+            </ul>
+          </div>
+
+          <div className="program featured">
+            <p>Tier 2</p>
+            <h3>Operational Risk Reduction Program</h3>
+            <span>$1,750 – $3,500/month</span>
+            <ul>
+              <li>Claims management support</li>
+              <li>Incident investigation support</li>
+              <li>Leadership KPI reporting</li>
+            </ul>
+          </div>
+
+          <div className="program">
+            <p>Tier 3</p>
+            <h3>Enterprise Risk & Safety Partnership</h3>
+            <span>$4,000 – $8,500+/month</span>
+            <ul>
+              <li>Fractional EHS Director support</li>
+              <li>Annual EHS roadmap</li>
+              <li>Executive reporting</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="section">
+        <p className="sectionEyebrow">Services</p>
+        <h2>Practical support for the risks that drive cost.</h2>
+        <div className="serviceGrid">
+          {["Slips, Trips & Falls", "Material Handling", "OSHA Support", "Incident Investigation", "Return-to-Work", "Supervisor Coaching", "Claims Cost Control", "Safety Leadership"].map((service) => (
+            <div className="service" key={service}>{service}</div>
+          ))}
+        </div>
+      </section>
+
+      <section id="about" className="aboutSection">
+        <div className="aboutCard">
+          <img src={headshot} alt="Maurice Rosser" />
 
           <div>
-            <h2 style={{fontSize:'36px', marginBottom:'12px'}}>About Maurice Rosser</h2>
+            <h2>About Maurice Rosser</h2>
 
-            <p style={{
-              color:'#cfcfcf',
-              fontSize:'18px',
-              lineHeight:'1.7',
-              maxWidth:'900px'
-            }}>
-              Maurice Rosser leads R3 Risk Solutions with a practical, operational approach
-              to workplace safety, risk reduction, and workers’ compensation strategy.
-              The mission is simple: help companies reduce preventable incidents and improve
-              long-term business performance.
+            <p>
+              Maurice Rosser leads R3 Risk Solutions with a practical, operational approach to workplace safety,
+              risk reduction, and workers’ compensation strategy. The mission is simple: help companies reduce
+              preventable incidents and improve long-term business performance.
             </p>
           </div>
         </div>
       </section>
+
+      <footer>
+        <img src={logo} alt="R3 Risk Solutions" />
+        <p>Workers’ comp, EHS, safety, claims management, and operational risk advisory for growing businesses.</p>
+        <span>© 2026 R3 Risk Solutions. All rights reserved.</span>
+      </footer>
     </main>
-  )
+  );
 }
