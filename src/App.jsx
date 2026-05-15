@@ -552,10 +552,6 @@ function Contact() {
         <button type="submit" className="primary-button form-button">
           Request Review
         </button>
-
-        <small>
-          Submitting opens a prepared email to Maurice at mdrosser123@gmail.com with the subject line “Risk Review Request.”
-        </small>
       </form>
     </section>
   );
